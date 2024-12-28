@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <style>
+      /* Reset margins and padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Apply styles to the entire body */
+      body {
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        font-size: 10rem;
+        text-align: center;
+        animation: slideIn 1s ease-in-out forwards;
+        cursor: pointer;
+        transition: transform 0.5s ease, color 0.5s ease; /* Smooth animation for transform and color */
+      }
+
+      h1:hover {
+        font-style: italic;
+        color: yellow;
+        transform: rotate(360deg); /* Simple rotation */
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-300px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Task Manager</h1>
+  </body>
+</html>
