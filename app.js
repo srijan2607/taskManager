@@ -6,24 +6,21 @@ const ConnectDB = require("./DB/connect");
 const { log } = require("console");
 const indexHtml = readFileSync("./sample/Task.html", "utf-8"); // Ensure this path is correct
 require("dotenv").config();
+const NotFound = require("./Middleware/Notfound");
+const ErrorHandler = require("./Middleware/ErrorHandler");
 // Middleware
+app.use(express.static("./public"));
 app.use(express.json());
 
 // Routes
 app.use("/api/v1/tasks", tasksRouter);
-
+app.use(NotFound);
+app.use(ErrorHandler);
 app.get("/hello", (req, res) => {
   res.send(indexHtml);
 });
 
-// Uncomment the comments below once CRUD is implemented:
-// app.get('/api/v1/tasks')         - get all tasks
-// app.post('/api/v1/tasks')        - create a new task
-// app.get('/api/v1/tasks/:id')     - get a single task
-// app.patch('/api/v1/tasks/:id')   - update a task
-// app.delete('/api/v1/tasks/:id')  - delete a task
-
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const start = async () => {
   try {
